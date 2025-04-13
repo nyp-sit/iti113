@@ -1,28 +1,28 @@
-<img src="images/nyplogo.png" alt="nyplogo" width="400"/>
+<img src="https://www.nyp.edu.sg/content/dam/nypcorp/sg/en/common/logo-nyp.svg" alt="nyplogo" width="300"/>
 
 # ITI105 Machine Learning Project
 
-## Module Objective
+## Work Integration Unit
+ 
+In this work integration unit, learners will apply their machine learning knowledge to solve a real-world business problem, demonstrating the ability to identify, translate, and deploy a practical ML solution. Additionally, learners will learn to ensure ML solution is trustworthy by applying AI governance and responsible AI principles, considering ethical and social implications.
 
-In this module, you will apply the knowledge and skills  acquired in other PDC1 modules to develop a solution for a problem in selected domain using machine learning approach.
+## Learning Unit Outcomes
 
-## Module Learning Outcomes
+1. Integrate machine learning knowledge to solve a real-world business problem
+2. Demonstrate ability to build, deploy and operationalise a practical ML solution
+3. Build trustworthy machine learning systems with reference to AI governance and responsible AI principles.
 
-1. Identify and select a suitable machine learning model for a given problem and data set
-2. Develop and deploy a machine learning application using appropriate software framework and tools
-3. Apply model tuning and optimization to improve performance of machine learning systems
-4. Evaluate machine learning models using appropriate metrics for efficiency and effectiveness
 
 ## Project Team
 
 You are expected to form a project team of up to 3 members.
 
-Each member should own one focus area (e.g. ML model experimentation, feature engineering, etc) and be able to complete the associated tasks independently. Marks will be deducted for individuals who rely heavily on others to complete their tasks.
+Each member should own one focus area (e.g. exploratory data analysis and data preparation, ML model experimentation, building data and machine learning pipeline, deployment etc) and be able to complete the associated tasks independently. Marks will be deducted for individuals who rely heavily on others to complete their tasks.
 
 The role of project mentor is to provide guidance on your project proposal, and to make sure you are on the right track in your milestones and final presentation and report.
 
 
-Please fill up the [online form](https://docs.google.com/forms/d/e/1FAIpQLSeTV0dLBegGIhnW9_z9Pu38eQCNKMs4dlLGqnHHK3Mq9LWd3g/viewform) of your project team members.
+Please fill up the [online form](https://forms.gle/ups1e22T4Y8dqNRt8) of your project team members.
 
 ## Deliverables and Assessment Components
 
@@ -30,21 +30,21 @@ This project consists of the following components:
 
 | Assessment components | Group | Individual | Total |
 | --------------------- | ----- | ---------- | ----- |
-| Project Proposal      | 15%   |            | 15%   |
+| Project Proposal      | 20%   |            | 20%   |
 | Milestone Report      | 10%   | 15%        | 25%   |
-| Final Presentation    | 10%   | 20%        | 30%   |
-| Final Report          | 10%    | 20%        | 30%   |
+| Final Presentation    | 5%    | 20%        | 25%   |
+| Final Report          | 10%   | 20%        | 30%   |
 
 **Submission deadlines:**
 
-- Project Proposal - 19 Jul 23:59
-- Milestones Report - 10 Aug 23:59
-- Final Report - 23 Aug 23:59
-- Final Presentation - 21 Aug (detailed schedule will be released nearer to presentation day)
+- Project Proposal - 27 Jul 23:59
+- Milestones Report - 17 Aug 23:59
+- Final Report - 27 Aug 23:59
+- Final Presentation - 27 Aug (detailed schedule will be released nearer to presentation day)
 
 ## Project Proposal
 
-In the project proposal, your team will pick a problem from the given **[list of suggested projects](./project-list.md)**, formulating it as a machine learning problem to work on early and receive feedback from project mentors. 
+In the project proposal, your team will pick a problem from the given **[list of suggested projects](./project-list.md)**, or a problem of your choice, formulating it as a machine learning problem to work on early and receive feedback from project mentors. 
 
 Once you have identified the problem, it can be useful to research on some prior work or research on the related topics. Another important aspect of your project is to identify one or several datasets suitable for your chosen problem. If that data needs considerable pre-processing  to suit your task, or that you intend to collect the needed data yourself, bear in mind that data collection is only one part of the entire project scope, but can often take up sizeable amount of time. You are still expected to have solid methodology and discussion of results, so pace your project accordingly.
 
@@ -137,22 +137,19 @@ The project teams will be jointly supervised by a group of project mentors. The 
 | Mr. Mar Kheng Kok (Module Leader) |       |       |
 | Mr. Lee Ching Yuh (Project Mentor)  |       |       |
 | Dr. Zhao Zhiqiang (Project Mentor)  |       |       |
-| Mr. Wee Chee Hong (Project Mentor)  |       |       |
-| Mr. Kee Li-Ren (Project Mentor)     |       |       |
-| Dr. Veronica Lim (Project Mentor)   |       |       |
-| Dr. Brandon Ooi(Project Mentor)     |       |       |
-| Mr. Julian Addison (Project Mentor) |       |       | 
+| Dr. Brandon Ooi (Project Mentor)  |       |       |
+
 ## Project Schedule
 
 | Week | Monday                                                        | Wed                                                                                     | Thur                                                          |
 | ---- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------- |
-| 13   |                                                               | |**11-Jul-24**<br/> Project Initiation /Discussion (F2F) <br/> (MKK-JUL)                       |                                                               
-| 14   |                                                               | |**18-Jul-24**<br/> Project Discussion (F2F) - <br/> (VER-JUL) |                                                               
-| 15   |                                                               | |**25-Jul-24**<br/> Project Dev / Consultation (F2F) <br/> (WCH-SOH)                           |                                                               
-| 16   |                                                               | |**1-Aug-24**<br/> Project Dev / Consultation (F2F) <br/> (JUL-SOH)                            |                                                               
-| 17   |                                                               | |**8-Aug-24**<br/> Project Dev/ Consultation (Zoom only) - <br/> (VER-MKK) | 
-| 18   | **12-Aug-24**<br/> Project Dev / Consultation (Zoom only) <br/> (WCH-SOH) | **14-Aug-24**<br/> Project Dev / Consultation (Zoom only) <br/> (JUL-SOH)                           | **15-Aug-24**<br/> Project Dev / Consultation (Zoom only) <br/> (LCY-JUL) |
-| 19   | **19-Aug-24**<br/> Project Dev / Consultation (Zoom only) <br/> (BRO-SOH) | **21-Aug-24**<br/> **Project Presentation** (F2F) <br/> (MKK,BRO,VER, LCY,WCH)                          |                                                               |
+| 13   |                                                               | |**17-Jul-25**<br/> Project Initiation /Discussion (F2F) <br/> (MKK)                       |                                                               
+| 14   |                                                               | |**24-Jul-25**<br/> Project Discussion (F2F) - <br/> (MKK) |                                                               
+| 15   |                                                               | |**31-Jul-25**<br/> Project Dev / Consultation (Zoom) <br/> (MKK)                           |                                                               
+| 16   |                                                               | |**7-Aug-25**<br/> Project Dev / Consultation (Zoom) <br/> (BRO)                            |                                                               
+| 17   |                                                               | |**14-Aug-25**<br/> Project Dev/ Consultation (Zoom) - <br/> (BRO) | 
+| 18   | **20-Aug-25**<br/> Project Dev / Consultation (Zoom) <br/> (MKK) | **18-Aug-25**<br/> Project Dev / Consultation (Zoom) <br/> (LCY)                           | **21-Aug-25**<br/> Project Dev / Consultation (Zoom only) <br/> (MKK) |
+| 19   | **25-Aug-25**<br/> Project Dev / Consultation (Zoom) <br/> (LCY) | **27-Aug-25**<br/> **Project Presentation** (Zoom) <br/> (MKK, BRO, LCY)                          |                                                               |
 
 **Legends* (Zoom)*
 
