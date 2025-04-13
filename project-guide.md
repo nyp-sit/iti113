@@ -1,6 +1,6 @@
 <img src="https://www.nyp.edu.sg/content/dam/nypcorp/sg/en/common/logo-nyp.svg" alt="nyplogo" width="300"/>
 
-# ITI105 Machine Learning Project
+# ITI113 Machine Learning Project
 
 ## Work Integration Unit
  
