@@ -49,7 +49,7 @@ This project consists of the following assessment components:
 **Assessment Schedule:**
 
 - Project Proposal - submitted by 26 Jul 23:59
-- Progress Check - 14 Aug (in-class assessment)
+- Progress Check - 14 Aug 
 - Final Report - submitted by 28 Aug 23:59
 - Final Presentation - 27 Aug (in-class assessment)
 
