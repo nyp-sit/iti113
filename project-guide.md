@@ -172,7 +172,7 @@ Each team should submit one combined Final report. The report should include the
 | AI governance checklist  (5%) | <ul><li>No checklist or minimal checklist completed</li><li>Explanation given in checklist is irrelevant or contains errors</li></ul> | <ul><li>Some checklist items completed</li><li>Explanation given in checklist is mostly relevant and correct</li></ul>  | <ul><li>Completed checklist for all required items</li><li>Explanation given in the checklist is relevant and correct.</li></ul> |
 | Test Result (5%) | No test result given or incomplete test result | Complete and relevant test result given | Complete and relevant test result given and good explanation of the test result | 
 
-#### Group (10%)
+#### Group 
 
 | | Below Expectation | Approaching Expectation | Meeting Expectation |
 |:----------|:----------|:----------|:----------|
@@ -213,10 +213,10 @@ The project teams will be jointly supervised by a group of project mentors. The 
 
 | Week | Monday | Wed | Thur|
 |:----------|:----------|:----------|:----------|
-| 13 | | |**17-Jul-25**<br/> Project Initiation / Consultation (F2F) <br/> (MKK-BRO) |                                                               
-| 14 | | |**24-Jul-25**<br/> Project Consultation (F2F) - <br/> (MKK-SOL) |                                                               
-| 15 | | |**31-Jul-25**<br/> Project Dev / Consultation (Zoom) <br/> (MKK-SOL) |                                                               
-| 16 | | |**7-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK-BRO) |                                                               
+| 13 | | |**17-Jul-25**<br/> Project Initiation / Consultation (F2F) <br/> (MKK/BRO) |                                                               
+| 14 | | |**24-Jul-25**<br/> Project Consultation (F2F) - <br/> (MKK/ZZQ) |                                                               
+| 15 | | |**31-Jul-25**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/BRO) |                                                               
+| 16 | | |**7-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |                                                               
 | 17 | | |**14-Aug-25**<br/> Progress Check (F2F) - <br/> (MKK/LCY/BRO/ZZQ) | 
 | 18 | **18-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) | **20-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK)| **21-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |
 | 19   | **25-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) | **27-Aug-25**<br/> **Project Presentation** (F2F) <br/> (MKK/LCY/BRO/ZZQ) | **28-Aug-25** <br/> *Final Repot Submission* |
