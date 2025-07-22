@@ -48,10 +48,10 @@ This project consists of the following assessment components:
 
 **Assessment Schedule:**
 
-- Project Proposal - submitted by 26 Jul 23:59
-- Progress Check - 14 Aug 
+- Project Proposal - submitted by 28 Jul 23:59
+- Progress Check - 18 Aug (Online) 
 - Final Report - submitted by 28 Aug 23:59
-- Final Presentation - 27 Aug (in-class assessment)
+- Final Presentation - 27 Aug (Online assessment)
 
 ***refer to POLITEMALL for most updated schedule***
 
@@ -217,8 +217,8 @@ The project teams will be jointly supervised by a group of project mentors. The 
 | 14 | | |**24-Jul-25**<br/> Project Consultation (F2F) - <br/> (MKK/ZZQ) |                                                               
 | 15 | | |**31-Jul-25**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/BRO) |                                                               
 | 16 | | |**7-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |                                                               
-| 17 | | |**14-Aug-25**<br/> Progress Check (F2F) - <br/> (MKK/LCY/BRO/ZZQ) | 
-| 18 | **18-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) | **20-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK)| **21-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |
+| 17 | | |**14-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only - <br/> (MKK) | 
+| 18 | **18-Aug-25**<br/> Progress Check (Zoom) <br/> (MKK/LCY/BRO/ZZQ) | **20-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK)| **21-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |
 | 19   | **25-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) | **27-Aug-25**<br/> **Project Presentation** (F2F) <br/> (MKK/LCY/BRO/ZZQ) | **28-Aug-25** <br/> *Final Repot Submission* |
 
 
