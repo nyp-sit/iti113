@@ -1,0 +1,22 @@
+[
+  {
+    "ParameterKey": "DomainName",
+    "ParameterValue": "team5-domain"
+  },
+  {
+    "ParameterKey": "StudioUserName", 
+    "ParameterValue": "team5-member"
+  },
+  {
+    "ParameterKey": "TeamUserName",
+    "ParameterValue": "team5-user"
+  },
+  {
+    "ParameterKey": "TeamName",
+    "ParameterValue": "team5"
+  },
+  {
+    "ParameterKey": "DefaultInstanceType",
+    "ParameterValue": "ml.t3.medium"
+  }
+]
