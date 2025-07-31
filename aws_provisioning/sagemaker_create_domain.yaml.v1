@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Description: Create SageMaker Domain and a test user with full SageMaker Access in PublicInternetOnly mode with idle shutdown.
+Description: Create SageMaker Domain and a test user with full SageMaker Access in PublicInternetOnly mode.
 
 Conditions:
   UseDefaultImage: !Equals [!Ref SageMakerImageArn, ""]
@@ -52,13 +52,6 @@ Parameters:
     Type: String
     Default: ""
     Description: Custom SageMaker image ARN for KernelGateway apps only (leave empty for default datascience-1.0 image). JupyterServer uses jupyter-server-3 automatically.
-
-  IdleTimeoutInMinutes:
-    Type: Number
-    Default: 60
-    MinValue: 60
-    MaxValue: 10080
-    Description: Time in minutes after which idle JupyterLab instances will be shut down (60 minutes to 7 days)
 
 Resources:
 
@@ -154,44 +147,13 @@ Resources:
       DefaultUserSettings:
         SecurityGroups: []
         ExecutionRole: !GetAtt SageMakerStudioFullAccessRole.Arn
-        JupyterLabAppSettings:
-          DefaultResourceSpec:
-            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
-            InstanceType: !Ref DefaultInstanceType
-          AppLifecycleManagement:
-            IdleSettings:
-              LifecycleManagement: ENABLED
-              IdleTimeoutInMinutes: !Ref IdleTimeoutInMinutes
-          LifecycleConfigArns: []
-        JupyterServerAppSettings:
-          DefaultResourceSpec:
-            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
-            InstanceType: "system"
-          LifecycleConfigArns: []
-        KernelGatewayAppSettings:
-          DefaultResourceSpec:
-            SageMakerImageArn: !If 
-              - UseDefaultImage
-              - !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/datascience-1.0"
-              - !Ref SageMakerImageArn
-            InstanceType: !Ref DefaultInstanceType
-          LifecycleConfigArns: []
       DefaultSpaceSettings:
         ExecutionRole: !GetAtt SageMakerStudioFullAccessRole.Arn
         SecurityGroups: []
-        JupyterLabAppSettings:
-          DefaultResourceSpec:
-            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
-            InstanceType: !Ref DefaultInstanceType
-          AppLifecycleManagement:
-            IdleSettings:
-              LifecycleManagement: ENABLED
-              IdleTimeoutInMinutes: !Ref IdleTimeoutInMinutes
         JupyterServerAppSettings:
           DefaultResourceSpec:
             SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
             InstanceType: "system"
-          LifecycleConfigArns: []
         KernelGatewayAppSettings:
           DefaultResourceSpec:
             SageMakerImageArn: !If 
@@ -199,7 +161,6 @@ Resources:
               - !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/datascience-1.0"
               - !Ref SageMakerImageArn
             InstanceType: !Ref DefaultInstanceType
-          LifecycleConfigArns: []
 
   UserProfile:
     Type: AWS::SageMaker::UserProfile
@@ -208,14 +169,6 @@ Resources:
       UserProfileName: !Ref StudioUserName
       UserSettings:
         ExecutionRole: !GetAtt SageMakerStudioFullAccessRole.Arn
-        JupyterLabAppSettings:
-          DefaultResourceSpec:
-            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
-            InstanceType: !Ref DefaultInstanceType
-          AppLifecycleManagement:
-            IdleSettings:
-              LifecycleManagement: ENABLED
-              IdleTimeoutInMinutes: !Ref IdleTimeoutInMinutes
 
   # Custom policy for domain-restricted access
   DomainRestrictedSageMakerPolicy:
@@ -495,7 +448,3 @@ Outputs:
     Value: !Ref TeamBucket
     Export:
       Name: !Sub "${AWS::StackName}-TeamBucketName"
-
-  IdleTimeoutSetting:
-    Description: "Idle timeout setting in minutes"
-    Value: !Ref IdleTimeoutInMinutes
