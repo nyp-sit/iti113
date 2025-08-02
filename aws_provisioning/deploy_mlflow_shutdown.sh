@@ -12,7 +12,7 @@ set -e
 # Configuration
 STACK_NAME="mlflow-shutdown-stack"
 TEMPLATE_FILE="lambda_mlflow_shutdown_template.yaml"
-REGION="${AWS_REGION:-us-east-1}"
+REGION="${AWS_REGION:-ap-southeast-1}"
 
 # Default parameters
 SHUTDOWN_TIME="${SHUTDOWN_TIME:-cron(0 0 * * ? *)}"  # Midnight UTC every day

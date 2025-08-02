@@ -2,7 +2,8 @@
 
 # Configuration file for team management
 # Modify this array to add/remove teams as needed
-TEAMS=("iti113-teamx")
+# TEAMS=("iti113-team2" "iti113-team5" "iti113-team7" "iti113-team8" "iti113-team12" "iti113-team16")
+TEAMS=("iti113-team5")
 
 # Function to validate team name format
 validate_team_name() {

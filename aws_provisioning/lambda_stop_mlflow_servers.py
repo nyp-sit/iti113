@@ -1,4 +1,5 @@
 import boto3
+from botocore.exceptions import ClientError
 import json
 import logging
 from datetime import datetime, timezone
@@ -31,8 +32,10 @@ def lambda_handler(event, context):
         tracking_servers = list_mlflow_tracking_servers()
         logger.info(f"Found {len(tracking_servers)} total MLflow tracking servers")
         
+        # for i, server in enumerate(tracking_servers):
+        #     print(f"Server {i}: {server}")
         # Filter running servers
-        running_servers = [server for server in tracking_servers if server['Status'] == 'InService']
+        running_servers = [server for server in tracking_servers if server['TrackingServerStatus'] == 'Started']
         logger.info(f"Found {len(running_servers)} running MLflow tracking servers")
         
         if not running_servers:
@@ -53,27 +56,29 @@ def lambda_handler(event, context):
         
         for server in running_servers:
             try:
-                server_name = server['MlflowTrackingServerName']
+                server_name = server['TrackingServerName']
                 logger.info(f"Stopping MLflow tracking server: {server_name}")
                 
-                # response = sagemaker_client.stop_mlflow_tracking_server(
-                #     MlflowTrackingServerName=server_name
-                # )
+               
+                response = sagemaker_client.stop_mlflow_tracking_server(
+                    TrackingServerName=server_name
+                )
+
                 
                 stopped_servers.append({
                     'name': server_name,
-                    'arn': server['MlflowTrackingServerArn'],
-                    # 'response': response
-                    'response': 'stopped'
+                    'arn': server['TrackingServerArn'],
+                    'response': response
+                    # 'response': 'stopped'
                 })
                 
                 logger.info(f"Successfully initiated stop for server: {server_name}")
                 
             except Exception as e:
-                logger.error(f"Failed to stop server {server['MlflowTrackingServerName']}: {str(e)}")
+                logger.error(f"Failed to stop server {server['TrackingServerName']}: {str(e)}")
                 failed_servers.append({
-                    'name': server['MlflowTrackingServerName'],
-                    'arn': server['MlflowTrackingServerArn'],
+                    'name': server['TrackingServerName'],
+                    'arn': server['TrackingServerArn'],
                     'error': str(e)
                 })
         
@@ -120,20 +125,34 @@ def list_mlflow_tracking_servers() -> List[Dict[str, Any]]:
     all_servers = []
     
     try:
-        # Get all domains
-        domains_response = sagemaker_client.list_domains()
-        domains = domains_response['Domains']
+        # # Get all domains
+        # domains_response = sagemaker_client.list_domains()
+        # domains = domains_response['Domains']
         
-        logger.info(f"Found {len(domains)} SageMaker domains")
+        # logger.info(f"Found {len(domains)} SageMaker domains")
         
         # List all MLflow tracking servers (no domain filtering needed)
         paginator = sagemaker_client.get_paginator('list_mlflow_tracking_servers')
         
         for page in paginator.paginate():
-            servers = page.get('MlflowTrackingServers', [])
-            all_servers.extend(servers)
-            logger.info(f"Found {len(servers)} MLflow tracking servers")
+            for server in page['TrackingServerSummaries']:
+                    try:
+                        # Get detailed information about each server
+                        server_details = sagemaker_client.describe_mlflow_tracking_server(
+                            TrackingServerName=server['TrackingServerName']
+                        )
+                        all_servers.append(server_details)
+                        print(f"Found: {server['TrackingServerName']}")
+                        
+                    except ClientError as e:
+                        print(f"Error describing {server['TrackingServerName']}: {e}")
+
+
+            # servers = page.get('MlflowTrackingServers', [])
+            # all_servers.extend(servers)
+            # logger.info(f"Found {len(servers)} MLflow tracking servers")
         
+        logger.info(f"Total MLflow tracking servers found: {len(all_servers)}")
         return all_servers
         
     except Exception as e:
@@ -190,4 +209,4 @@ def send_metrics(stopped_count: int, failed_count: int, total_count: int, error:
         
     except Exception as e:
         logger.error(f"Failed to send metrics to CloudWatch: {str(e)}")
-        # Don't raise the exception as metrics failure shouldn't break the main function 
+        # Don't raise the exception as metrics failure shouldn't break the main function
