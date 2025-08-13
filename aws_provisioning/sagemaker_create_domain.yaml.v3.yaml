@@ -1,0 +1,531 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Create SageMaker Domain and a test user with full SageMaker Access in PublicInternetOnly mode with idle shutdown.
+
+Conditions:
+  UseDefaultImage: !Equals [!Ref SageMakerImageArn, ""]
+
+Parameters:
+
+  DomainName:
+    Type: String
+    Default: "iti113-01-domain"
+    Description: SageMaker Studio Domain Name
+
+  StudioUserName:
+    Type: String
+    Default: "test-user1"
+    Description: SageMaker Studio User Name
+
+  VPCId:
+    Type: String
+    Description: VPC Id for SageMaker Studio
+    Default: "vpc-07f122244b1276c56"
+
+  SubnetIds:
+    Type: String
+    Description: Subnet Ids for SageMaker Studio
+    Default: "subnet-0bb1e67de7adf7ee9,subnet-02e19d5be0ffd537b"
+
+  TeamUserName:
+    Type: String
+    Default: "team-user1"
+    Description: IAM User name for team member access
+
+  TeamName:
+    Type: String
+    Default: "team1"
+    Description: Team identifier for tagging and organization
+
+  DefaultInstanceType:
+    Type: String
+    Default: "ml.t3.medium"
+    Description: Default instance type for SageMaker Studio KernelGateway apps (JupyterServer uses 'system' automatically)
+    AllowedValues:
+      - "ml.t3.medium"
+      - "ml.t3.large"
+      - "ml.m5.large"
+      - "ml.m5.xlarge"
+      - "ml.c5.large"
+      - "ml.c5.xlarge"
+
+  SageMakerImageArn:
+    Type: String
+    Default: ""
+    Description: Custom SageMaker image ARN for KernelGateway apps only (leave empty for default datascience-1.0 image). JupyterServer uses jupyter-server-3 automatically.
+
+  IdleTimeoutInMinutes:
+    Type: Number
+    Default: 60
+    MinValue: 60
+    MaxValue: 10080
+    Description: Time in minutes after which idle JupyterLab instances will be shut down (60 minutes to 7 days)
+
+Resources:
+
+  SageMakerStudioFullAccessRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: !Sub "${AWS::StackName}-${DomainName}-${TeamName}-Role"
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - sagemaker.amazonaws.com
+            Action: 'sts:AssumeRole'
+      Path: "/"
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/AmazonSageMakerFullAccess
+        - arn:aws:iam::aws:policy/AmazonSageMakerCanvasFullAccess
+        - arn:aws:iam::aws:policy/AmazonSageMakerCanvasAIServicesAccess
+      Policies:
+        - PolicyName: TeamBucketFullAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                  - s3:PutObject
+                  - s3:DeleteObject
+                  - s3:ListBucket
+                  - s3:GetBucketLocation
+                  - s3:GetBucketCORS
+                  - s3:GetBucketVersioning
+                  - s3:ListBucketVersions
+                Resource:
+                  - !Sub "arn:aws:s3:::${TeamName}-bucket"
+                  - !Sub "arn:aws:s3:::${TeamName}-bucket/*"
+        - PolicyName: MLflowAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - sagemaker-mlflow:*
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - sagemaker:CreateMlflowTrackingServer
+                  - sagemaker:DescribeMlflowTrackingServer
+                  - sagemaker:UpdateMlflowTrackingServer
+                  - sagemaker:DeleteMlflowTrackingServer
+                  - sagemaker:ListMlflowTrackingServers
+                  - sagemaker:StartMlflowTrackingServer
+                  - sagemaker:StopMlflowTrackingServer
+                Resource: "*"
+        - PolicyName: ServiceCatalogAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - servicecatalog:ListAcceptedPortfolioShares
+                  - servicecatalog:DescribePortfolio
+                  - servicecatalog:ListPortfolios
+                  - servicecatalog:SearchProducts
+                  - servicecatalog:DescribeProduct
+                  - servicecatalog:ListPrincipalsForPortfolio
+                  - servicecatalog:ListPortfolioAccess
+                  - servicecatalog:DescribePortfolioShareStatus
+                  - servicecatalog:ListOrganizationPortfolioAccess
+                  - sagemaker:GetSagemakerServicecatalogPortfolioStatus
+                Resource: "*"
+        - PolicyName: IAMAndKMSAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - iam:ListRoles
+                  - iam:ListAttachedRolePolicies
+                  - iam:GetRole
+                  - iam:GetRolePolicy
+                  - iam:PassRole
+                  - iam:AttachRolePolicy
+                  - iam:DetachRolePolicy
+                  - kms:ListAliases
+                  - kms:DescribeKey
+                  - kms:ListKeys
+                Resource: "*"
+        - PolicyName: SageMakerUserProfileAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - sagemaker:CreateUserProfile
+                  - sagemaker:DescribeUserProfile
+                  - sagemaker:UpdateUserProfile
+                  - sagemaker:DeleteUserProfile
+                Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:user-profile/*"
+
+  SageMakerStudioInternetOnlyDomain:
+    Type: AWS::SageMaker::Domain
+    Properties:
+      AppNetworkAccessType: PublicInternetOnly
+      AuthMode: IAM
+      DomainName: !Ref DomainName
+      SubnetIds: !Split [",", !Ref SubnetIds ]
+      VpcId: !Ref VPCId
+      DefaultUserSettings:
+        SecurityGroups: []
+        ExecutionRole: !GetAtt SageMakerStudioFullAccessRole.Arn
+        JupyterLabAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
+            InstanceType: !Ref DefaultInstanceType
+          AppLifecycleManagement:
+            IdleSettings:
+              LifecycleManagement: ENABLED
+              IdleTimeoutInMinutes: !Ref IdleTimeoutInMinutes
+          LifecycleConfigArns: []
+        JupyterServerAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
+            InstanceType: "system"
+          LifecycleConfigArns: []
+        KernelGatewayAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !If 
+              - UseDefaultImage
+              - !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/datascience-1.0"
+              - !Ref SageMakerImageArn
+            InstanceType: !Ref DefaultInstanceType
+          LifecycleConfigArns: []
+      DefaultSpaceSettings:
+        ExecutionRole: !GetAtt SageMakerStudioFullAccessRole.Arn
+        SecurityGroups: []
+        JupyterLabAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
+            InstanceType: !Ref DefaultInstanceType
+          AppLifecycleManagement:
+            IdleSettings:
+              LifecycleManagement: ENABLED
+              IdleTimeoutInMinutes: !Ref IdleTimeoutInMinutes
+        JupyterServerAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
+            InstanceType: "system"
+          LifecycleConfigArns: []
+        KernelGatewayAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !If 
+              - UseDefaultImage
+              - !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/datascience-1.0"
+              - !Ref SageMakerImageArn
+            InstanceType: !Ref DefaultInstanceType
+          LifecycleConfigArns: []
+
+  UserProfile:
+    Type: AWS::SageMaker::UserProfile
+    Properties:
+      DomainId: !Ref SageMakerStudioInternetOnlyDomain
+      UserProfileName: !Ref StudioUserName
+      UserSettings:
+        ExecutionRole: !GetAtt SageMakerStudioFullAccessRole.Arn
+        JupyterLabAppSettings:
+          DefaultResourceSpec:
+            SageMakerImageArn: !Sub "arn:aws:sagemaker:${AWS::Region}:492261229750:image/jupyter-server-3"
+            InstanceType: !Ref DefaultInstanceType
+          AppLifecycleManagement:
+            IdleSettings:
+              LifecycleManagement: ENABLED
+              IdleTimeoutInMinutes: !Ref IdleTimeoutInMinutes
+
+  # Custom policy for domain-restricted access
+  DomainRestrictedSageMakerPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: !Sub "${AWS::StackName}-${DomainName}-${TeamName}-RestrictedAccess"
+      Description: "Domain-restricted SageMaker access policy for team users"
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          # Allow access to the specific domain
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeDomain
+              - sagemaker:CreatePresignedDomainUrl
+              - sagemaker:CreatePresignedNotebookInstanceUrl
+              - sagemaker:ListTags
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:domain/${SageMakerStudioInternetOnlyDomain}"
+          # Allow MLflow permissions
+          - Effect: Allow
+            Action:
+              - sagemaker-mlflow:*
+              - sagemaker:CreateMlflowTrackingServer
+              - sagemaker:DescribeMlflowTrackingServer
+              - sagemaker:UpdateMlflowTrackingServer
+              - sagemaker:DeleteMlflowTrackingServer
+              - sagemaker:ListMlflowTrackingServers
+              - sagemaker:StartMlflowTrackingServer
+              - sagemaker:StopMlflowTrackingServer
+            Resource: "*"
+          # Allow listing user profiles (global)
+          - Effect: Allow
+            Action:
+              - sagemaker:ListUserProfiles
+            Resource: "*"
+          # Allow listing spaces (global)
+          - Effect: Allow
+            Action:
+              - sagemaker:ListSpaces
+            Resource: "*"
+          # Allow listing processing jobs (global)
+          - Effect: Allow
+            Action:
+              - sagemaker:ListUserProfiles
+              - sagemaker:ListSpaces
+              - sagemaker:ListProcessingJobs
+              - sagemaker:ListTrainingJobs
+              - sagemaker:Search
+              - sagemaker:ListModels 
+            Resource: "*"
+          # Allow access to user profiles within the domain
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeUserProfile
+              - sagemaker:CreateUserProfile
+              - sagemaker:UpdateUserProfile
+              - sagemaker:DeleteUserProfile
+              - sagemaker:CreatePresignedDomainUrl
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:user-profile/${SageMakerStudioInternetOnlyDomain}/*"
+          # Allow access to apps within the domain
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeApp
+              - sagemaker:CreateApp
+              - sagemaker:DeleteApp
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:app/${SageMakerStudioInternetOnlyDomain}/*"
+          # Allow access to notebook instances within the domain
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeNotebookInstance
+              - sagemaker:CreateNotebookInstance
+              - sagemaker:DeleteNotebookInstance
+              - sagemaker:StartNotebookInstance
+              - sagemaker:StopNotebookInstance
+              - sagemaker:UpdateNotebookInstance
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:notebook-instance/${SageMakerStudioInternetOnlyDomain}/*"
+          # Allow access to training jobs with domain name prefix
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeTrainingJob
+              - sagemaker:CreateTrainingJob
+              - sagemaker:StopTrainingJob
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:training-job/${DomainName}/*"
+          # Allow access to endpoints with domain name prefix
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeEndpoint
+              - sagemaker:CreateEndpoint
+              - sagemaker:DeleteEndpoint
+              - sagemaker:UpdateEndpoint
+              - sagemaker:InvokeEndpoint
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:endpoint/${DomainName}/*"
+          # Allow access to processing jobs with domain name prefix
+          - Effect: Allow
+            Action:
+              - sagemaker:DescribeProcessingJob
+              - sagemaker:CreateProcessingJob
+              - sagemaker:StopProcessingJob
+            Resource: !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:processing-job/${DomainName}/*"
+          # Allow listing domains (global)
+          - Effect: Allow
+            Action:
+              - sagemaker:ListDomains
+            Resource: "*"
+          # Allow Service Catalog portfolio status check (required for SageMaker Studio)
+          - Effect: Allow
+            Action:
+              - sagemaker:GetSagemakerServicecatalogPortfolioStatus
+            Resource: "*"
+          # Allow Service Catalog permissions (required for SageMaker Studio)
+          - Effect: Allow
+            Action:
+              - servicecatalog:ListAcceptedPortfolioShares
+              - servicecatalog:DescribePortfolio
+              - servicecatalog:ListPortfolios
+              - servicecatalog:SearchProducts
+              - servicecatalog:DescribeProduct
+              - servicecatalog:ListPrincipalsForPortfolio
+              - servicecatalog:ListPortfolioAccess
+              - servicecatalog:DescribePortfolioShareStatus
+              - servicecatalog:ListOrganizationPortfolioAccess
+            Resource: "*"
+          # Allow IAM role listing (required for SageMaker Studio resource creation)
+          - Effect: Allow
+            Action:
+              - iam:ListRoles
+              - iam:ListAttachedRolePolicies
+              - iam:GetRole
+              - iam:GetRolePolicy
+              - iam:PassRole
+              - iam:AttachRolePolicy
+              - iam:DetachRolePolicy
+            Resource: "*"
+          # Allow KMS permissions (required for SageMaker Studio encryption)
+          - Effect: Allow
+            Action:
+              - kms:ListAliases
+              - kms:DescribeKey
+              - kms:ListKeys
+            Resource: "*"
+          # Allow access to CloudWatch logs for the domain
+          - Effect: Allow
+            Action:
+              - logs:DescribeLogGroups
+              - logs:DescribeLogStreams
+              - logs:GetLogEvents
+            Resource: !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/sagemaker/Studio/*"
+          # Allow access to S3 buckets for SageMaker
+          - Effect: Allow
+            Action:
+              - s3:GetObject
+              - s3:PutObject
+              - s3:DeleteObject
+              - s3:ListBucket
+              - s3:GetBucketCORS
+              - s3:GetBucketLocation
+              - s3:GetBucketVersioning
+              - s3:ListBucketVersions
+            Resource:
+              - "arn:aws:s3:::sagemaker-*"
+              - "arn:aws:s3:::sagemaker-*/*"
+          # Allow listing all S3 buckets (for S3 console access)
+          - Effect: Allow
+            Action:
+              - s3:ListAllMyBuckets
+              - s3:GetBucketLocation
+            Resource: "*"
+          # Allow full access to the team's specific bucket
+          - Effect: Allow
+            Action:
+              - s3:GetObject
+              - s3:PutObject
+              - s3:DeleteObject
+              - s3:ListBucket
+              - s3:GetBucketCORS
+              - s3:GetBucketLocation
+              - s3:GetBucketVersioning
+              - s3:ListBucketVersions
+              - s3:GetBucketPolicy
+              - s3:PutBucketPolicy
+              - s3:DeleteBucketPolicy
+              - s3:GetBucketAcl
+              - s3:PutBucketAcl
+              - s3:GetBucketTagging
+              - s3:PutBucketTagging
+              - s3:DeleteBucketTagging
+            Resource:
+              - !Sub "arn:aws:s3:::${TeamName}-bucket"
+              - !Sub "arn:aws:s3:::${TeamName}-bucket/*"
+          # Deny access to SageMaker resources outside the specified region
+          - Effect: Deny
+            Action:
+              - sagemaker:*
+            Resource: "*"
+            Condition:
+              StringNotEquals:
+                "aws:RequestedRegion": !Ref AWS::Region
+          # Additional deny for domain, user-profile, and app resources outside region
+          - Effect: Deny
+            Action:
+              - sagemaker:*
+            Resource:
+              - !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:domain/*"
+              - !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:user-profile/*"
+              - !Sub "arn:aws:sagemaker:${AWS::Region}:${AWS::AccountId}:app/*"
+            Condition:
+              StringNotLike:
+                "aws:RequestedRegion": !Ref AWS::Region
+
+  # S3 Bucket for team data
+  TeamBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub "${TeamName}-bucket"
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+      Tags:
+        - Key: DomainName
+          Value: !Ref DomainName
+        - Key: Team
+          Value: !Ref TeamName
+        - Key: StackName
+          Value: !Ref AWS::StackName
+
+  # IAM User for team access
+  TeamUser:
+    Type: AWS::IAM::User
+    Properties:
+      UserName: !Ref TeamUserName
+      Path: "/"
+      LoginProfile:
+        Password: "iti113p@ss"
+        PasswordResetRequired: true
+      ManagedPolicyArns:
+        - !Ref DomainRestrictedSageMakerPolicy
+        - arn:aws:iam::aws:policy/IAMUserChangePassword
+      Tags:
+        - Key: DomainName
+          Value: !Ref DomainName
+        - Key: Team
+          Value: !Ref TeamName
+        - Key: StackName
+          Value: !Ref AWS::StackName
+
+  # Optional: Create access keys for programmatic access
+  TeamUserAccessKey:
+    Type: AWS::IAM::AccessKey
+    Properties:
+      UserName: !Ref TeamUser
+
+Outputs:
+
+  NewSageMakerDomain:
+    Description: "New Domain Id"
+    Value: !Ref SageMakerStudioInternetOnlyDomain
+
+  SageMakerDomainUrl:
+    Value: !Join
+      - ''
+      - - 'https://console.aws.amazon.com/sagemaker/home?region='
+        - !Ref 'AWS::Region'
+        - '#/studio/'
+        - !Ref SageMakerStudioInternetOnlyDomain
+    Description: URL to access the SageMaker Domain
+
+  TeamUserName:
+    Description: "IAM User name for team access"
+    Value: !Ref TeamUser
+
+  TeamUserAccessKeyId:
+    Description: "Access Key ID for programmatic access"
+    Value: !Ref TeamUserAccessKey
+    Export:
+      Name: !Sub "${AWS::StackName}-TeamUserAccessKeyId"
+
+  TeamUserSecretAccessKey:
+    Description: "Secret Access Key for programmatic access (retrieve from AWS Console)"
+    Value: !Sub "{{resolve:secretsmanager:${TeamUserAccessKey}:SecretString:SecretAccessKey}}"
+    Export:
+      Name: !Sub "${AWS::StackName}-TeamUserSecretAccessKey"
+
+  TeamBucketName:
+    Description: "S3 Bucket name for team data"
+    Value: !Ref TeamBucket
+    Export:
+      Name: !Sub "${AWS::StackName}-TeamBucketName"
+
+  IdleTimeoutSetting:
+    Description: "Idle timeout setting in minutes"
+    Value: !Ref IdleTimeoutInMinutes
