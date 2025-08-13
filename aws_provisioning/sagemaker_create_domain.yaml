@@ -419,10 +419,30 @@ Resources:
               - s3:PutBucketAcl
               - s3:GetBucketTagging
               - s3:PutBucketTagging
-              - s3:DeleteBucketTagging
             Resource:
               - !Sub "arn:aws:s3:::${TeamName}-bucket"
               - !Sub "arn:aws:s3:::${TeamName}-bucket/*"
+          # Allow Secrets Manager permissions for SageMaker integration
+          - Effect: Allow
+            Action:
+              - secretsmanager:CreateSecret
+              - secretsmanager:GetSecretValue
+              - secretsmanager:DescribeSecret
+              - secretsmanager:UpdateSecret
+              - secretsmanager:DeleteSecret
+              - secretsmanager:ListSecrets
+              - secretsmanager:TagResource
+              - secretsmanager:UntagResource
+              - secretsmanager:PutSecretValue
+            Resource: 
+              - !Sub "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:sagemaker-*"
+              - !Sub "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:AmazonSageMaker-*"
+              - !Sub "arn:aws:secretsmanager:${AWS::Region}:${AWS::AccountId}:secret:${TeamName}-*"
+          # Allow listing all secrets (for console access)
+          - Effect: Allow
+            Action:
+              - secretsmanager:ListSecrets
+            Resource: "*"
           # Deny access to SageMaker resources outside the specified region
           - Effect: Deny
             Action:
