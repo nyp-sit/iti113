@@ -150,6 +150,11 @@ Each team should submit one combined Final report. The report should include the
 - Project artifacts 
   - link to the git repository for your code (the jupyter notebook) and link to your demo app. 
 
+**Note** 
+- clearly mark the section contributed by each member
+- use the font size of 12, times new roman, single column.
+- the main content (excluding cover page, TOC and appendix) should not be more than 20 pages. Only highlight the key info, the details can be parked under appendix.
+  
 ### Grading Rubrics
 
 #### Model Development (Individual - 20%)
@@ -206,7 +211,7 @@ The project teams will be jointly supervised by a group of project mentors. The 
 | Mr. Lee Ching Yuh (Project Mentor) | refer to POLITEMALL |
 | Dr. Brandon Ooi(Project Mentor)  | refer to POLITEMALL |
 | Dr. Zhao Zhiqiang (Project Mentor) | refer to POLITEMALL |
-| Mr. Solomon Soh (Project Mentor) | refer to POLITEMALL | 
+
 
 ## Project Schedule
 
