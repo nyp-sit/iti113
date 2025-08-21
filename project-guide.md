@@ -42,7 +42,7 @@ This project consists of the following assessment components:
 | Assessment components | Group | Individual | Total |
 | --------------------- | ----- | ---------- | ----- |
 | Project Proposal      | 15%   |            | 15%   |
-| Progress Check        | 10%   | 20%        | 25%   |
+| Progress Check        | 5%   | 20%        | 25%   |
 | Final Report          | 10%   | 20%        | 30%   |
 | Final Presentation    | 10%   | 20%        | 25%   |
 
