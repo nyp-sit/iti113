@@ -44,7 +44,7 @@ This project consists of the following assessment components:
 | Project Proposal      | 15%   |            | 15%   |
 | Progress Check        | 5%   | 20%        | 25%   |
 | Final Report          | 10%   | 20%        | 30%   |
-| Final Presentation    | 10%   | 20%        | 25%   |
+| Final Presentation    | 5%   | 20%        | 25%   |
 
 **Assessment Schedule:**
 
