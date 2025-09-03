@@ -1,0 +1,1 @@
+time="2025-09-02T17:23:17+08:00" level=fatal msg="failed to get regions: UnauthorizedOperation: You are not authorized to perform this operation. User: arn:aws:iam::837028399719:user/markk is not authorized to perform: ec2:DescribeRegions because no identity-based policy allows the ec2:DescribeRegions action\n\tstatus code: 403, request id: b00c6630-fe25-48b5-8cac-365331e00375"

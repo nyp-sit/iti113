@@ -183,6 +183,81 @@ Resources:
                 Action:
                   - secretsmanager:ListSecrets
                 Resource: "*"
+        - PolicyName: EventBridgeAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - events:PutRule
+                  - events:DeleteRule
+                  - events:DescribeRule
+                  - events:ListRules
+                  - events:PutTargets
+                  - events:RemoveTargets
+                  - events:ListTargetsByRule
+                  - events:EnableRule
+                  - events:DisableRule
+                  - events:ListRuleNamesByTarget
+                  - events:PutEvents
+                  - events:TestEventPattern
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - events:CreateEventBus
+                  - events:DeleteEventBus
+                  - events:DescribeEventBus
+                  - events:ListEventBuses
+                Resource: "*"
+        - PolicyName: LambdaAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - lambda:CreateFunction
+                  - lambda:DeleteFunction
+                  - lambda:GetFunction
+                  - lambda:GetFunctionConfiguration
+                  - lambda:ListFunctions
+                  - lambda:ListVersionsByFunction
+                  - lambda:PublishVersion
+                  - lambda:UpdateFunctionCode
+                  - lambda:UpdateFunctionConfiguration
+                  - lambda:InvokeFunction
+                  - lambda:AddPermission
+                  - lambda:RemovePermission
+                  - lambda:GetPolicy
+                  - lambda:TagResource
+                  - lambda:UntagResource
+                  - lambda:ListTags
+                  - lambda:CreateAlias
+                  - lambda:DeleteAlias
+                  - lambda:UpdateAlias
+                  - lambda:GetAlias
+                  - lambda:ListAliases
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - iam:CreateRole
+                  - iam:DeleteRole
+                  - iam:GetRole
+                  - iam:PutRolePolicy
+                  - iam:DeleteRolePolicy
+                  - iam:AttachRolePolicy
+                  - iam:DetachRolePolicy
+                  - iam:PassRole
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                  - logs:DescribeLogGroups
+                  - logs:DescribeLogStreams
+                  - logs:GetLogEvents
+                  - logs:DeleteLogGroup
+                Resource: "*"
 
   SageMakerStudioInternetOnlyDomain:
     Type: AWS::SageMaker::Domain
@@ -403,7 +478,17 @@ Resources:
               - logs:DescribeLogGroups
               - logs:DescribeLogStreams
               - logs:GetLogEvents
-            Resource: !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/sagemaker/Studio/*"
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+            Resource: "*"
+          # Additional specific permissions for SageMaker log groups
+          - Effect: Allow
+            Action:
+              - logs:*
+            Resource: 
+              - !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/sagemaker/*"
+              - !Sub "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/sagemaker/*:*"
           # Allow access to S3 buckets for SageMaker
           - Effect: Allow
             Action:
@@ -466,6 +551,21 @@ Resources:
             Action:
               - secretsmanager:ListSecrets
             Resource: "*"
+          - Effect: Allow
+            Action:
+              - events:PutRule
+              - events:DeleteRule
+              - events:DescribeRule
+              - events:ListRules
+              - events:PutTargets
+              - events:RemoveTargets
+              - events:ListTargetsByRule
+              - events:EnableRule
+              - events:DisableRule
+              - events:ListRuleNamesByTarget
+              - events:PutEvents
+              - events:TestEventPattern
+            Resource: "*"
           # Deny access to SageMaker resources outside the specified region
           - Effect: Deny
             Action:
@@ -485,6 +585,64 @@ Resources:
             Condition:
               StringNotLike:
                 "aws:RequestedRegion": !Ref AWS::Region
+
+  # Lambda permissions policy for team users
+  LambdaAccessPolicy:
+    Type: AWS::IAM::ManagedPolicy
+    Properties:
+      ManagedPolicyName: !Sub "${AWS::StackName}-${DomainName}-${TeamName}-LambdaAccess"
+      Description: "Lambda function creation and deployment permissions for team users"
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          # Allow Lambda permissions for function creation and deployment
+          - Effect: Allow
+            Action:
+              - lambda:CreateFunction
+              - lambda:DeleteFunction
+              - lambda:GetFunction
+              - lambda:GetFunctionConfiguration
+              - lambda:ListFunctions
+              - lambda:ListVersionsByFunction
+              - lambda:PublishVersion
+              - lambda:UpdateFunctionCode
+              - lambda:UpdateFunctionConfiguration
+              - lambda:InvokeFunction
+              - lambda:AddPermission
+              - lambda:RemovePermission
+              - lambda:GetPolicy
+              - lambda:TagResource
+              - lambda:UntagResource
+              - lambda:ListTags
+              - lambda:CreateAlias
+              - lambda:DeleteAlias
+              - lambda:UpdateAlias
+              - lambda:GetAlias
+              - lambda:ListAliases
+            Resource: "*"
+          # Allow IAM permissions for Lambda execution roles
+          - Effect: Allow
+            Action:
+              - iam:CreateRole
+              - iam:DeleteRole
+              - iam:GetRole
+              - iam:PutRolePolicy
+              - iam:DeleteRolePolicy
+              - iam:AttachRolePolicy
+              - iam:DetachRolePolicy
+              - iam:PassRole
+            Resource: "*"
+          # Allow CloudWatch Logs permissions for Lambda functions
+          - Effect: Allow
+            Action:
+              - logs:CreateLogGroup
+              - logs:CreateLogStream
+              - logs:PutLogEvents
+              - logs:DescribeLogGroups
+              - logs:DescribeLogStreams
+              - logs:GetLogEvents
+              - logs:DeleteLogGroup
+            Resource: "*"
 
   # S3 Bucket for team data
   TeamBucket:
@@ -517,6 +675,7 @@ Resources:
         PasswordResetRequired: true
       ManagedPolicyArns:
         - !Ref DomainRestrictedSageMakerPolicy
+        - !Ref LambdaAccessPolicy
         - arn:aws:iam::aws:policy/IAMUserChangePassword
       Tags:
         - Key: DomainName

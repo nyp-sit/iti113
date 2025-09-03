@@ -1,0 +1,22 @@
+[
+  {
+    "ParameterKey": "DomainName",
+    "ParameterValue": "iti113-team1-domain"
+  },
+  {
+    "ParameterKey": "StudioUserName", 
+    "ParameterValue": "iti113-team1-member"
+  },
+  {
+    "ParameterKey": "TeamUserName",
+    "ParameterValue": "iti113-team1-user"
+  },
+  {
+    "ParameterKey": "TeamName",
+    "ParameterValue": "iti113-team1"
+  },
+  {
+    "ParameterKey": "DefaultInstanceType",
+    "ParameterValue": "ml.t3.medium"
+  }
+]

@@ -1,0 +1,33 @@
+regions:
+  - global
+  - ap-southeast-1
+  - ap-southeast-2
+  - us-east-1
+  - us-west-1
+
+blocklist:
+- "999999999999" # production
+
+accounts:
+  "837028399719": {} # aws-nuke-example
+
+resource-types: 
+  excludes: 
+    - S3Bucket 
+    - S3Object
+    - RoboMakerSimulationApplication
+    - RoboMakerSimulationJob
+    - CloudSearchDomain
+    - QLDBLedger
+    - IAMUser
+    - IAMLoginProfile 
+    - IAMUserAccessKey
+    - IAMUserGroupAttachment
+    - IAMUserPolicyAttachment
+    - IAMGroup
+    - IAMGroupPolicyAttachment
+    - IAMPolicy
+    - IAMRole
+    - IAMRolePolicy
+    - IAMRolePolicyAttachment
+
