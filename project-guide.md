@@ -37,7 +37,7 @@ Please fill up the [online form](https://docs.google.com/forms/d/e/1FAIpQLSeD-6n
 | **1 Student** | Full Stack ML | A + B + C + D | ✅ Full | ✅ Full | ✅ Full | ✅ Full | ✅ Full |
 | **2 Students** | Student 1 | Model Development (B) | ✅ Main | ✅ Main | ◑ Support | ◑ Partial | ◑ Model-level (bias, explainability) |
 |  | Student 2 | MLOps & Deployment (C) | ◑ Support | ◑ Support | ✅ Main | ◑ Partial | ✅ System-level (monitoring, logging, control) |
-| **3 Students** | Student 1 | Model Development (Model A) | ✅ Main | ✅ Main | ◑ Partial | ◑ Support | ◑ Model-level (fairness, bias checks) |
+| **3 Students** | Student 1 | Model Development (Model A) | ✅ Main | ✅ Main | ◑ Support | ◑ Partial | ◑ Model-level (fairness, bias checks) |
 |  | Student 2 | Model Development (Model B) | ✅ Main | ✅ Main | ◑ Support | ◑ Partial | ◑ Model-level (comparison, explainability) |
 |  | Student 3 | MLOps & Deployment (C) | ◑ Support | ◑ Support | ✅ Main | ◑ Partial | ✅ System-level (governance, monitoring, compliance) |
 
