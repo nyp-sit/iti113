@@ -235,7 +235,7 @@ The project teams will be jointly supervised by a group of project mentors. The 
 ## Project Schedule
 
 
-| Week | Monday | Wed | Thur|
+| Week | Monday | Wednesday | Thursday |
 |:----------|:----------|:----------|:----------|
 | 13 | | |**16-Jul-26**<br/> Project Initiation / Consultation (F2F) <br/> (MKK/LSH) |                                                               
 | 14 | | |**23-Jul-26**<br/> Project Consultation (F2F) - <br/> (MKK/LSH) |                                                               
