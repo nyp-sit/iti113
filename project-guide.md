@@ -14,54 +14,67 @@
 
 You are expected to form a project team of up to 3 members. 
 
-- Each member should own one focus area of either:
-  - Model Development 
-  - Model Deployment & Operations
+- Each member should take ownership and lead his/her primary or focus area(s) (refer to later sections on descriptions of focus areas)
+- Each member should be able to deliver his/her focus area(s) while providing support in other areas, and the team should complete all the associated tasks.
+- Each team is expected work professionally and amicably. Marks will be deducted for individuals who rely heavily on others to complete their tasks, and/or for teams that do not work well together.
+- The role of the project mentor is to provide guidance on your project proposal and to make sure you are on the right track in your project (not expected to settle disputes or disagreements in teams)
 
-- Each member should focus on one area and be able to complete the associated tasks independently. Marks will be deducted for individuals who rely
-heavily on others to complete their tasks.
-- Each team can have a mix of members on both model development and model deployment & operations, or with the entire team focusing on model development only
-- The role of the project mentor is to provide guidance on your project proposal and to make sure you are on the right track in your project.
-
-Please fill up the [online form](https://docs.google.com/forms/d/e/1FAIpQLSdlSpoKG7daouFBJyTZFH90-IgLuqVni4VcPMddrnkDZb0PQw/viewform?usp=sharing&ouid=104511639249216066150) of your project team members.
+Please fill up the [online form](https://docs.google.com/forms/d/e/1FAIpQLSeD-6n_YYT-DeoNPcEv0u6HoiTz-bfNkQJJaIFh70sArY3prQ/viewform?usp=preview) of your project team members.
 
 ## Overview of Focus Areas 
 
-| Stage  | Model Development | Model Deployment & Operations  |
-|:----------|:----------|:----------|
-| Proposal    |The team will identify a business problem of your choice (or from the suggested list of projects) and formulate it as a machine learning problem. Perform AI risk assessment. Identify potential datasets to use for model development | same as Model Development |
-| Progress Check | Finalized training datasets, completed EDA and evaluation result of baseline model | Completed data pipeline and experimentation tracking setup and test environment setup | 
-| Final Report | Fine-tuned models with error analysis and interpretation of results | Model deployed on MLOps platform, completed checklist for AI governance, demo app deployed |  
-| Final Presentation | Highlight key individual contributions and demonstrate generated artifacts with of methodologies, results, and related development work | same as Model Development |
+| Assessment Stage | A (Data & EDA) | B (Model Dev) | C (MLOps) | D (Analysis & Comm) | AI Governance | Expected Outputs |
+|-----------------|---------------|--------------|-----------|---------------------|---------------|------------------|
+| **Proposal** | Problem framing, dataset identification | Define ML approach (baseline idea) | High-level pipeline design | Problem justification & business context | Initial AI risk assessment | Problem statement, dataset plan, risks identified |
+| **Progress Check** | Completed EDA, cleaned dataset | Baseline model + initial evaluation | Data pipeline + experiment tracking setup | Initial results interpretation | Identify potential bias / data issues | EDA notebook, baseline results, pipeline setup |
+| **Final Report** | Final dataset & feature engineering | Fine-tuned models + comparison (if applicable) | Deployment (endpoint/app), pipeline completed | Error analysis, insights, interpretation | Full governance checklist (fairness, explainability, monitoring) | Final report, deployed system, governance documentation |
+| **Final Presentation** | Summary of dataset & approach | Key model results | System demo (deployment) | Clear communication of insights | Governance considerations explained | Demo + presentation of end-to-end system |
 
+## Proposed Tasks / Workload Allocation for Team Members
+
+| Team Size | Student Role | Primary Responsibility | A (Data & EDA) | B (Model Dev) | C (MLOps) | D (Analysis & Comm) | AI Governance |
+|----------|-------------|------------------------|----------------|---------------|-----------|---------------------|---------------|
+| **1 Student** | Full Stack ML | A + B + C + D | ✅ Full | ✅ Full | ✅ Full | ✅ Full | ✅ Full |
+| **2 Students** | Student 1 | Model Development (B) | ✅ Main | ✅ Main | ◑ Support | ◑ Partial | ◑ Model-level (bias, explainability) |
+|  | Student 2 | MLOps & Deployment (C) | ◑ Support | ◑ Support | ✅ Main | ◑ Partial | ✅ System-level (monitoring, logging, control) |
+| **3 Students** | Student 1 | Model Development (Model A) | ✅ Main | ✅ Main | ◑ Support | ◑ Support | ◑ Model-level (fairness, bias checks) |
+|  | Student 2 | Model Development (Model B) | ✅ Main | ✅ Main | ◑ Support | ◑ Support | ◑ Model-level (comparison, explainability) |
+|  | Student 3 | MLOps & Deployment (C) | ◑ Support | ◑ Support | ✅ Main | ◑ Support | ✅ System-level (governance, monitoring, compliance) |
+
+Performance Expectation:
+- Each team must demonstrate progress across all components (A–D and AI Governance) at every assessment stage.  
+- Larger teams are expected to show greater depth (e.g., multi-model comparison, pipeline automation, monitoring).  
+- The expected problem complexity, model performance, and level of detailed analysis and insights should increase proportionally with team size.
+- AI Governance must be addressed progressively from risk identification (Proposal) to full implementation (Final Report).
 
 ## Deliverables and Assessment Components
 
 This project consists of the following assessment components:
 
-| Assessment components | Group | Individual | Total |
-| --------------------- | ----- | ---------- | ----- |
-| Project Proposal      | 20%   |            | 20%   |
-| Progress Check        | 5%   | 20%        | 25%   |
-| Final Report          | 10%   | 20%        | 30%   |
-| Final Presentation    | 5%   | 20%        | 25%   |
+| Assessment Component | Recommended Focus + Governance) | Overall (%) | Individual (%) | Total (%) |
+|---------------------|--------------------------|-----------|----------------|-----------|
+| **Project Proposal** | A (Problem & Data), D (Justification), Governance (Risk) | 20% | – | 20% |
+| **Progress Check** | A (EDA), B (Baseline Model), C (Pipeline Setup), Governance (Bias Awareness) | 5% | 20% | 25% |
+| **Final Report** | B (Tuned Models), C (Deployment), D (Analysis), Governance (Full Checklist) | 10% | 20% | 30% |
+| **Final Presentation** | D (Communication), B (Results), C (System Demo), Governance (Explanation) | 5% | 20% | 25% |
+
 
 **Assessment Schedule:**
 
-- Project Proposal - submitted by 28 Jul 23:59
-- Progress Check - 18 Aug (Online) 
-- Final Report - submitted by 28 Aug 23:59
-- Final Presentation - 27 Aug (Online assessment)
+- Project Proposal + Checklist - submitted by Sun 26 Jul 2026 23:59
+- Project Milestone Progress Check - Submitted by Sun 16 Aug 2026 23:59  
+- Final Report - submitted by Thu 27 Aug 2026 23:59
+- Final Presentation - Wed 26 Aug 2026 (Online assessment)
 
 ***refer to POLITEMALL for most updated schedule***
 
 
-## Project Proposal
+## Project Proposal (20%)
 
 - In the project proposal, your team will pick a business problem of your choice (or from the suggested list of projects) and formulate it as a machine learning problem.
 - You are to perform risk assessment of the AI system you are developing. 
 - Once you have identified the problem, it can be useful to research on some prior work or research on the related topics. 
-- Another important aspect of your project is to identify one or several datasets suitable for your chosen problem. You can either use existing dataset or collect the data yourself. (bear in mind the timeframe given that data collection effort may be significant that will impact your project completion schedule)
+- Another important aspect of your project is to identify one or several datasets suitable for your chosen problem. You can either use existing dataset (recommended) or collect the data yourself. (bear in mind the timeframe given that data collection effort may be significant that will impact your project completion schedule)
 
 ### Format
 
@@ -78,12 +91,13 @@ Project proposal should include the following information:
 
 #### Grading Rubrics for Project Proposal
 
-|                    | Below Expectation                                                                                                                                                                                                                                                                                                    | Approaching Expectation                                                                                                                                                                                                                | Meeting Expectation                                                                                                                                                                                                                                                                                                                                                                             |
-| -- | -- | -- | -- |
-|| 0 - <10 marks | 10 - <16 marks | 16 - 20 marks  |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
-| *Project Proposal* | <ul><li>No or minimal formulation of the problem. </li><li>No reference to dataset is provided or dataset given is not relevant to the problem. </li><li>No ML approach is provided or incorrect approach proposed for the problem</li><li>No deployment scenario provided or lack of details on deployment </li><li>Little or no risk and impact assessment done</li></ul> | <ul><li>Correct problem formulation is provided.</li><li>Dataset provided is somewhat relevant to the problem.</li><li>Appropriate ML approach is proposed</li><li>Some discussion on how the model is to be deployed. </li><li>Some assessment of the risk and impact</ul><br/> | <ul><li>Correct  problem formulation with consideration for alternative formulation such as heuristics.</li><li>Dataset provided is relevant with discussion on how the dataset is collected.</li><li>    Correct ML approach proposed with some discussion on other ML approaches. </li><li>Clear and detailed discussion on how the model is deployed in the overall solution.</li><li>Very clear assessment of the impact and risk of the AI system</ul><br/> |
+|  | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <10 marks | 10 – <12 marks | 12 – <14 marks | 14 – <16 marks | 16 – 20 marks |
+| **Project Proposal** | * No or minimal formulation of the problem.<br>* No reference to dataset is provided or dataset given is not relevant to the problem.<br>* No ML approach is provided or incorrect approach proposed for the problem.<br>* No deployment scenario provided or lack of details on deployment.<br>* Little or no risk and impact assessment done. | * Basic problem formulation but lacks clarity.<br>* Dataset loosely relevant with minimal explanation.<br>* Basic ML approach suggested with weak justification.<br>* Limited discussion on deployment.<br>* Superficial risk and impact assessment. | * Correct problem formulation is provided.<br>* Dataset provided is somewhat relevant to the problem.<br>* Appropriate ML approach is proposed.<br>* Some discussion on how the model is to be deployed.<br>* Some assessment of the risk and impact. | * Well-defined problem formulation with consideration for alternative approaches (e.g. heuristics).<br>* Dataset provided is relevant with discussion on how the dataset is collected.<br>* Correct ML approach proposed with some discussion on other ML approaches.<br>* Clear and structured discussion on how the model is deployed in the overall solution.<br>* Clear assessment of the impact, risks, and limitations of the AI system. | * Strong and well-justified problem formulation with critical evaluation of alternatives.<br>* High-quality dataset with detailed discussion on collection, limitations, and suitability.<br>* Well-justified ML approach with comparison of multiple approaches.<br>* Detailed and realistic deployment architecture integrated into the solution.<br>* Comprehensive AI governance: clear discussion of risks, bias, ethical considerations, and mitigation strategies. |
 
-## Progress Check 
+
+## Progress Check (25%)
 
 ### Model Development 
 
@@ -96,34 +110,36 @@ You should have setup the MLOps platform that allows the modelling team to perfo
 
 ### Grading Rubrics 
 
-#### Model Development (Individual - 20%)
+#### Model Development Focus (Individual - 20%)
 
-|   | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | (0 - <7.5) | (7.5 - <12) | (12 - 15)|
-| Data Understanding & Preprocessing  (15%) | <ul><li>Minimal or no exploratory data analysis</li><li>Minimal or no data preparation done</li></ul> | <ul><li>Some exploratory data analysis done with some discussion</li><li>some data preprocessing done</li></ul> | <ul><li>Signifcant amount of exploratory data analysis with insighful discussion</li><li>Significant amount of data preparation</li></ul> |
-| | (0 - < 2.5) | (2.5 - < 4) | (4 - 5)
-| Modelling  (5%)  | <ul><li>Inappropriate choice of algorithms for the chosen problem</li><li>Minimal or no model experimentation is done | <ul><li>appropriate choice of algorithm for the chosen problem</li><li>Some model experimentation is done with reasonable result</li></ul>  | <ul><li>appropriate choice of algorithm with clear justification and consideration of ai governance aspects</li><li>Some early model experimentation results with clear interpretation and good performance exceeding baseline</li></ul> |
-
-
-#### Model Operations & Deployment (Individual - 20%)
-
-|   | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | (0 - <7.5) | (7.5 - <12) | (12 - 15)
-| MLOps Pipeline (15%)| <ul><li>No data pipeline is defined or or data pipeline has errors</li><li>No experimentation logging setup</li><li>Minimal features or no features setup for MLOps platform</li></ul> | <ul><li>Appropriate data pipeline is setup and works partially</li><li>Experiment logging available</li><li>Model registry is available for model versioning| <ul><li>Complete and working data pipeline</li><li>Extensive logging facility available with dashboard / visualization</li><li>Model registry and CI/CD pipeline is setup</li></ul> |
-| | (0 - < 2.5) | (2.5 - < 4) | (4 - 5)
-| AI governance checklist (5%)  | <ul><li>No checklist or minimal checklist completed</li><li>Explanation given in checklist is irrelevant or contains errors</li></ul> | <ul><li>Some checklist items completed</li><li>Explanation given in checklist is mostly relevant and correct</li></ul>  | <ul><li>Most checklist items relevant for the given project cycle is completed</li><li>Explanation given in the checklist is relevant and correct.</li></ul> |
-
-#### Group (10%)
-
-| | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | (0 - <4) | (5 - <8) | (8 - 10) | 
-| Team work | Little or no coordination between members in model development process or no coordination between model and mlops members | Some coordination between members in the model development process, or coordination between development operation team in defining the data pipeline, model experimentation tracking and CI/CD pipeline | Very close coordination within the model development team, or between the model development and operation team in defining the data pipeline, model experimentation tracking and CI/CD pipeline | 
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <7.5 marks | 7.5 – <9 marks | 9 – <10.5 marks | 10.5 – <12 marks | 12 – 15 marks |
+| **Data Understanding & Preprocessing (15%)** | * Minimal or no exploratory data analysis.<br>* Minimal or no data preparation. | * Limited EDA with superficial observations.<br>* Basic preprocessing with gaps or errors. | * Adequate EDA with some insights.<br>* Reasonable preprocessing completed. | * Good EDA with clear insights and patterns identified.<br>* Well-executed preprocessing and feature preparation. | * Extensive and insightful EDA uncovering non-obvious patterns.<br>* Advanced preprocessing and feature engineering with strong justification. |
+|  | 0 – <2.5 marks | 2.5 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+|  **Modelling (5%)**  | * Inappropriate or no model used.<br>* No meaningful experimentation. | * Basic model selected with weak justification.<br>* Limited experimentation with poor results. | * Appropriate model selected.<br>* Some experimentation with reasonable results. | * Appropriate model with clear justification and consideration of AI governance.<br>* Good performance exceeding baseline with clear interpretation. | * Strong model selection with comparison or tuning.<br>* High performance with deep interpretation, limitations discussed, and governance considerations clearly integrated. |
 
 
-## Final Report
+#### Model Operations & Deployment Focus (Individual - 20%)
+
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <7.5 marks | 7.5 – <9 marks | 9 – <10.5 marks | 10.5 – <12 marks | 12 – 15 marks |
+| **MLOps Pipeline (15%)** | * No data pipeline is defined or data pipeline has errors.<br>* No experiment logging setup.<br>* Minimal or no features setup for MLOps platform. | * Basic pipeline defined but incomplete or partially working.<br>* Limited experiment logging with minimal functionality.<br>* Basic MLOps features setup but lacks integration. | * Appropriate data pipeline is setup and works partially.<br>* Experiment logging available.<br>* Model registry available for versioning. | * Complete and working data pipeline.<br>* Extensive logging facility available with dashboard / visualization.<br>* Model registry and partial CI/CD pipeline setup. | * Fully automated and robust data pipeline.<br>* Advanced logging, monitoring, and visualization dashboards.<br>* Complete model registry with CI/CD pipeline and deployment automation. |
+|  | 0 – <2.5 marks | 2.5 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **AI Governance Checklist (5%)** | * No checklist or minimal checklist completed.<br>* Explanation in checklist is irrelevant or contains errors. | * Basic checklist with limited items completed.<br>* Explanation partially relevant but lacks clarity. | * Some checklist items completed.<br>* Explanation mostly relevant and correct. | * Most checklist items relevant for the project cycle completed.<br>* Explanation is clear and relevant. | * Comprehensive checklist fully aligned to project lifecycle.<br>* Clear, accurate, and well-justified explanations including risks, bias, and mitigation strategies. |
+
+#### Overall / Group (5%)
+
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <2.5 Marks | 2.5 – <3 Marks | 3 – <3.5 Marks | 3.5 – <4 Marks| 4 – 5 Marks |
+| **Teamwork (Multi-member Teams)** | * Little or no coordination between members in model development process.<br>* No coordination between model and MLOps members. | * Limited coordination between members.<br>* Minimal collaboration between model and operations roles. | * Some coordination between members in model development.<br>* Basic coordination between development and operations teams. | * Good coordination within team across model development and MLOps.<br>* Clear collaboration in defining pipeline, tracking, and CI/CD. | * Excellent coordination across all team members.<br>* Seamless integration between model development and MLOps (pipeline, tracking, CI/CD fully aligned). |
+| **Integration (1-Person Team)** | * Components are disconnected with little integration.<br>* Workflow is incomplete or inconsistent. | * Some components connected but workflow lacks clarity.<br>* Integration is partial and inconsistent. | * Components are generally connected.<br>* Workflow is functional but may lack smoothness. | * Well-integrated components across A–D.<br>* Smooth and logical workflow from data to deployment. | * Fully integrated end-to-end system.<br>* Seamless flow across all components (A–D + governance) with clear design, consistency, and robustness. |
+
+- For 1-person teams, assessment focuses on system integration quality, coherence, and smooth workflow across all components instead of team coordination.
+
+## Final Report (30%)
 
 Each team should submit one combined Final report. The report should include the following sections: 
 
@@ -157,49 +173,51 @@ Each team should submit one combined Final report. The report should include the
   
 ### Grading Rubrics
 
-#### Model Development (Individual - 20%)
+#### Model Development Focus (Individual - 20%)
 
-|   | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | (0 - <4) | (5 - <8) | (8 - 10)|
-| Data (10%) | <ul><li>No or minimal data analysis provided</li></ul> | <ul><li>Good data analysis provided with some insights</li></ul> | <ul><li>Excellent data analysis with very insighful discussion</li><li>Analysis of potential data bias and mitigation techniques</li></ul> |
-| | (0 - <4) | (5 - <8) | (8 - 10)
-| Modelling (10%) | <ul><li>Little or no explanation of choice of algorithms</li><li>Minimal or no discussion of experimental results | <ul><li>Good explanation of algorithms used</li><li>Good discussion of experimental results</li></ul>  | <ul><li>Excellent discussion of algorithmic choice and the resultant trade-off</li><li>Excellent discussion of the experimental results and the performance tuning done</li></ul> |
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <4 marks | 4 – <6 marks | 6 – <7 marks | 7 – <8 marks | 8 – 10 marks |
+| **Data (10%)** | * No or minimal data analysis provided. | * Basic data analysis with limited insights. | * Good data analysis provided with some insights. | * Strong data analysis with clear and meaningful insights.<br>* Some discussion of potential data bias. | * Excellent data analysis with very insightful discussion.<br>* Clear analysis of potential data bias and mitigation techniques. |
+|  | 0 – <4 marks | 4 – <6 marks | 6 – <7 marks | 7 – <8 marks | 8 – 10 marks |
+| **Modelling (10%)** | * Little or no explanation of choice of algorithms.<br>* Minimal or no discussion of experimental results. | * Basic explanation of algorithm choice.<br>* Limited discussion of experimental results. | * Good explanation of algorithms used.<br>* Good discussion of experimental results. | * Strong explanation of algorithm choice with some discussion of trade-offs.<br>* Clear discussion of experimental results and performance. | * Excellent discussion of algorithmic choice and trade-offs.<br>* Excellent discussion of experimental results and performance tuning. |
 
+#### Model Operations & Deployment Focus (Individual - 20%)
 
-#### Model Operations & Deployment (Individual - 20%)
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **MLOps Pipeline (5%)** | * No or minimal description of the ML pipeline setup. | * Basic description of pipeline with limited clarity.<br>* Weak linkage to model development or deployment. | * Clear description of the ML pipeline setup, supporting model development and deployment. | * Well-structured pipeline with clear explanation of components and workflow.<br>* Good linkage to model lifecycle. | * Very clear and comprehensive pipeline architecture.<br>* Demonstrates automation, scalability, and strong integration across development and deployment. |
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **Demo Application (5%)** | * Minimal or no description of how the application works. | * Basic description of the application.<br>* Limited explanation of interaction with models. | * Clear description of the application with explanation of interfacing with the models. | * Well-described application with clear architecture and integration with models.<br>* Good explanation of system flow. | * Very clear and detailed application architecture.<br>* Strong integration with models and explanation of continuous training or updates. |
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **AI Governance Checklist (5%)** | * No checklist or minimal checklist completed.<br>* Explanation is irrelevant or incorrect. | * Basic checklist with limited items.<br>* Explanation partially correct. | * Some checklist items completed.<br>* Explanation mostly relevant and correct. | * Most checklist items completed and relevant.<br>* Explanation is clear and appropriate. | * Comprehensive checklist aligned to full project lifecycle.<br>* Clear, accurate explanation including risks, bias, and mitigation strategies. |
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **Test Results (5%)** | * No test results or incomplete results. | * Limited or partially relevant test results. | * Complete and relevant test results provided. | * Good test results with clear explanation and evaluation. | * Comprehensive test results with strong analysis, validation, and interpretation. |
 
-|   | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | (0 - <2.5) | (2.5 - <4) | (4 - 5)
-| MLOps Pipeline (5%) | <ul><li>No or minimal description of the ML pipeline setup </li></ul> | <ul><li>Clear description of the ML pipeline setup, which supports model development and deployment| <ul><li>Very clear description of the ML pipeline setup to support model development and deployment</li>|
-| Demo Application (5%)  | <ul><li>minimal or no description of the application works</li></ul> | <ul><li>Clear description of the application, with explanation of the interfacing with the models</li></ul>  | <ul><li>Very clear description of the application and the features provided, the application architecture including the integration with the models, and description of how it enable continuous training </li></ul> |
-| AI governance checklist  (5%) | <ul><li>No checklist or minimal checklist completed</li><li>Explanation given in checklist is irrelevant or contains errors</li></ul> | <ul><li>Some checklist items completed</li><li>Explanation given in checklist is mostly relevant and correct</li></ul>  | <ul><li>Completed checklist for all required items</li><li>Explanation given in the checklist is relevant and correct.</li></ul> |
-| Test Result (5%) | No test result given or incomplete test result | Complete and relevant test result given | Complete and relevant test result given and good explanation of the test result | 
+#### Overall / Group (10%)
 
-#### Group 
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **Problem Formulation (5%)** | * Unclear or incorrect ML formulation. | * Basic ML formulation with limited clarity.<br>* Minimal use of heuristics. | * Clear ML formulation provided.<br>* Includes some heuristics. | * Well-defined ML formulation with appropriate heuristics.<br>* Some discussion of evaluation metrics. | * Very clear and well-justified ML formulation.<br>* Strong use of heuristics and clear discussion of evaluation metrics to measure success. |
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **Overall Report (5%)** | * Inconsistent or poorly structured report formatting.<br>* No clear contribution from members. | * Somewhat consistent report formatting.<br>* Limited clarity of member contributions. | * Generally consistent report formatting.<br>* Basic indication of member contributions. | * Very consistent report formatting.<br>* Clear indication of contributions of each member. | * Highly consistent and professional report formatting.<br>* Clear, detailed, and well-balanced contribution from each member. |
 
-| | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | (0 - <2.5) | (2.5 - <4) | (4 - 5) | 
-| Problem formulation (5%) | Unclear ML formulation | Clear ML formulation, and includes heuristics | Very clear ML formulation, with heuristics, and discussion of metrics used to measure success | 
-| Team work (5%)| Inconsistent report formatting | somewhat consistent report formatting | very consistent report formatting with clear indication of contribution of each members |  
-
-
-## Final Presentation
+## Final Presentation (25%)
 
 During final presentation, you will be jointly assessed by more than one supervisor to ensure fairness in assessment. Among other things, you are required to show and explain the work you have done. You will be assessed based on your demonstrated understanding of the methodologies used and discussion of the experimental results.
 
-
-
 ### Grading Rubrics
 
-| | Below Expectation | Approaching Expectation | Meeting Expectation |
-|:----------|:----------|:----------|:----------|
-| | 0 - <2.5  | 2.5 - <4 | 4 - 5|
-| Presentation (Group) (5%) | <ul><li>No coordination among members</li><li>Incoherent presentation flow</li></ul><br/>| <ul><li>Some coordination among members</li><li>Presentation flow is evident</li></ul><br/> | <ul><li>Good coordination among members</li><li>Presentation flow is clear and very clear task division.</li></ul><br/>
-| | 0 - <10 | 10 - <16 | 16 - 20 | 
-| Presentation (Individual) (20 %) | <ul><li>Unable to present the content or incoherent presentation</li><li>Unable to answer most of the questions</li></ul> | <ul><li>Somewhat clear and coherent presentation</li><li>Able to answer some questions with some hesitation</li></ul> | <ul><li> Clear and coherent presentation with demo of application / deployment</li><li>Able to answer all or most of the questions confidently</li></ul> |
+| Criteria | Not Competent | Developing | Functional | Competent | Proficient |
+|--|--|--|--|--|--|
+|  | 0 – <2 marks | 2 – <3 marks | 3 – <3.5 marks | 3.5 – <4 marks | 4 – 5 marks |
+| **Presentation (Group) (5%)** | * No coordination among members.<br>* Incoherent presentation flow. | * Limited coordination among members.<br>* Presentation flow is weak or inconsistent. | * Some coordination among members.<br>* Presentation flow is evident. | * Good coordination among members.<br>* Presentation flow is clear with defined task division. | * Excellent coordination among members.<br>* Seamless presentation flow with clear and well-balanced task division. |
+| **Presentation (1-Person Team) (5%)** | * Components are disconnected.<br>* Presentation lacks structure and flow. | * Some structure but flow is inconsistent.<br>* Transitions between sections are weak. | * Generally coherent presentation.<br>* Flow is functional with minor gaps. | * Well-structured presentation with smooth transitions.<br>* Clear logical flow across all components. | * Fully integrated, seamless presentation.<br>* Strong narrative flow linking all components (A–D + governance) clearly and coherently. |
+|  | 0 – <10 marks | 10 – <13 marks | 13 – <16 marks | 16 – <18 marks | 18 – 20 marks |
+| **Presentation (Individual) (20%)** | * Unable to present content or presentation is incoherent.<br>* Unable to answer most questions. | * Basic presentation with limited clarity.<br>* Able to answer some questions with hesitation. | * Clear and generally coherent presentation.<br>* Able to answer most questions. | * Clear and confident presentation with good structure.<br>* Able to answer questions well. | * Highly clear, confident, and engaging presentation.<br>* Demonstrates strong understanding with ability to answer all or most questions confidently.<br>* Includes effective demo of application / deployment. |
+
 
 ## Project mentors
 
@@ -207,24 +225,25 @@ The project teams will be jointly supervised by a group of project mentors. The 
 
 | Name                              | Contact |
 |:----------|:----------|
-| Mr. Mar Kheng Kok (Module Leader) | refer to POLITEMALL |
-| Mr. Lee Ching Yuh (Project Mentor) | refer to POLITEMALL |
-| Dr. Brandon Ooi(Project Mentor)  | refer to POLITEMALL |
-| Dr. Zhao Zhiqiang (Project Mentor) | refer to POLITEMALL |
-
+| Mr. Mar Kheng Kok (Course Manager / Project Mentor) | refer to POLITEMALL |
+| Dr. Leong Siang Huei (Module Leader / Project Mentor) | refer to POLITEMALL |
+| Dr. Brandon Ooi (Project Mentor)  | refer to POLITEMALL |
+| Mr. Wee Chee Hong (Project Mentor)  | refer to POLITEMALL |
+| Mr. Lee Ching Yuh (Project Mentor)  | refer to POLITEMALL |
+| Mr. Steven Ng (Project Mentor) | refer to POLITEMALL |
 
 ## Project Schedule
 
 
 | Week | Monday | Wed | Thur|
 |:----------|:----------|:----------|:----------|
-| 13 | | |**17-Jul-25**<br/> Project Initiation / Consultation (F2F) <br/> (MKK/BRO) |                                                               
-| 14 | | |**24-Jul-25**<br/> Project Consultation (F2F) - <br/> (MKK/ZZQ) |                                                               
-| 15 | | |**31-Jul-25**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/BRO) |                                                               
-| 16 | | |**7-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |                                                               
-| 17 | | |**14-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only - <br/> (MKK) | 
-| 18 | **18-Aug-25**<br/> Progress Check (Zoom) <br/> (MKK/LCY/BRO/ZZQ) | **20-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK)| **21-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |
-| 19   | **25-Aug-25**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) | **27-Aug-25**<br/> **Project Presentation** (**Zoom**) <br/> (MKK/LCY/BRO/ZZQ) | **28-Aug-25** <br/> *Final Repot Submission* |
+| 13 | | |**16-Jul-26**<br/> Project Initiation / Consultation (F2F) <br/> (MKK/LSH) |                                                               
+| 14 | | |**23-Jul-26**<br/> Project Consultation (F2F) - <br/> (MKK/LSH) |                                                               
+| 15 | | |**30-Jul-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) |                                                               
+| 16 | | |**6-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH) |                                                               
+| 17 | | |**13-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only - <br/> (MKK) | 
+| 18 | **17-Aug-26**<br/> Progress Check (Zoom) <br/> (MKK/LSH) | **19-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH)| **20-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |
+| 19   | **24-Aug-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) | **26-Aug-26**<br/> **Project Presentation** (**Zoom**) <br/> (MKK/LCY/LSH/BRO/WCH/SNG) | **27-Aug-26** <br/> *Final Repot Submission* |
 
 
 **Legends**
@@ -232,8 +251,10 @@ The project teams will be jointly supervised by a group of project mentors. The 
 - ALL - All tutors
 - MKK - Mr. Mar Kheng Kok
 - LCY - Mr. Lee Ching Yuh
-- ZZQ - Dr. Zhao Zhiqiang
+- LSH - Dr. Leong Siang Huei
 - BRO - Dr. Brandon Ooi
+- WCH - Mr. Wee Chee Hong
+- SNG - Mr. Steven Ng
 
 
 [[1\]](#_ftnref1) Refer to the Lesson 3 lecture notes on ML framing 
