@@ -243,7 +243,7 @@ The project teams will be jointly supervised by a group of project mentors. The 
 | 16 | | |**6-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH) |                                                               
 | 17 | | |**13-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only - <br/> (MKK) | 
 | 18 | **17-Aug-26**<br/> Progress Check (Zoom) <br/> (MKK/LSH) | **19-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH/MKK)| **20-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK/LSH) |
-| 19   | **24-Aug-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) | **26-Aug-26**<br/> **Project Presentation** (**Zoom**) <br/> (MKK/LSH/BRO/SNG) | **27-Aug-26** <br/> *Final Repot Submission* |
+| 19   | **24-Aug-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) | **26-Aug-26**<br/> **Project Presentation** (**Zoom**) <br/> (MKK/LSH/BRO/SNG) | **27-Aug-26** <br/> *Final Report Submission* |
 
 
 **Legends**
