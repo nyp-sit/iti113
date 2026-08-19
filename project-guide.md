@@ -229,7 +229,7 @@ The project teams will be jointly supervised by a group of project mentors. The 
 | Dr. Leong Siang Huei (Module Leader / Project Mentor) | refer to POLITEMALL |
 | Dr. Brandon Ooi (Project Mentor)  | refer to POLITEMALL |
 | Mr. Wee Chee Hong (Project Mentor)  | refer to POLITEMALL |
-| Mr. Lee Ching Yuh (Project Mentor)  | refer to POLITEMALL |
+| Mr. Chow Kim Foong (Project Mentor)  | refer to POLITEMALL |
 | Mr. Steven Ng (Project Mentor) | refer to POLITEMALL |
 
 ## Project Schedule
