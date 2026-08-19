@@ -242,17 +242,17 @@ The project teams will be jointly supervised by a group of project mentors. The 
 | 15 | | |**30-Jul-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) |                                                               
 | 16 | | |**6-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH) |                                                               
 | 17 | | |**13-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only - <br/> (MKK) | 
-| 18 | **17-Aug-26**<br/> Progress Check (Zoom) <br/> (MKK/LSH) | **19-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH)| **20-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK) |
-| 19   | **24-Aug-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) | **26-Aug-26**<br/> **Project Presentation** (**Zoom**) <br/> (MKK/LCY/LSH/BRO/WCH/SNG) | **27-Aug-26** <br/> *Final Repot Submission* |
+| 18 | **17-Aug-26**<br/> Progress Check (Zoom) <br/> (MKK/LSH) | **19-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (LSH/MKK)| **20-Aug-26**<br/> Project Dev / Consultation (Zoom, by appointment only) <br/> (MKK/LSH) |
+| 19   | **24-Aug-26**<br/> Project Dev / Consultation (Zoom) <br/> (MKK/LSH) | **26-Aug-26**<br/> **Project Presentation** (**Zoom**) <br/> (MKK/LSH/BRO/SNG) | **27-Aug-26** <br/> *Final Repot Submission* |
 
 
 **Legends**
 
 - ALL - All tutors
 - MKK - Mr. Mar Kheng Kok
-- LCY - Mr. Lee Ching Yuh
-- LSH - Dr. Leong Siang Huei
+- CKF - Mr. Chow Kim Foong
 - BRO - Dr. Brandon Ooi
+- LSH - Dr. Leong Siang Huei
 - WCH - Mr. Wee Chee Hong
 - SNG - Mr. Steven Ng
 
